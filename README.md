@@ -3,4 +3,4 @@ A selection of SQL queries and visualizations I created while analyzing a relati
 
 Database links: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
-Each folder in the repository represents a separate query on group of similar queries.
+Each folder in the repository represents a separate query or group of similar queries.
