@@ -3,4 +3,4 @@ A compilation of SQL queries and visualizations for conducting comprehensive ana
 
 Database links: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
-Each folder in the repository represents a separate query or group of similar queries. Included in each folder is a PDF file displaying the resutling data displayed in a series of Tableau visualizations.
+Each folder in the repository represents a separate query or group of related queries. Included in each folder is a PDF file displaying the resutling data displayed in a series of Tableau visualizations.
