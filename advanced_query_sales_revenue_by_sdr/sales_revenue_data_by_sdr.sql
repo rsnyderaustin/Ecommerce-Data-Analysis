@@ -1,10 +1,12 @@
 -- Calculate the revenue per deal and the total revenue generated for each sdr
 
-with sdr_sellers as (SELECT ip.sdr_first_name, ip.sdr_last_name, ip.sdr_id, cd.seller_id
-              FROM olist_closed_deals_dataset cd
-                       INNER JOIN ids_processed ip
+with sdr_sellers as (SELECT ip.sdr_first_name, ip.sdr_last_name as sdr_last_name,
+                            ip.sdr_id as employee_id,
+                            cd.seller_id as seller_id
+                     FROM olist_closed_deals_dataset cd
+                     INNER JOIN ids_processed ip
                                   ON cd.sdr_id = ip.sdr_id)
-SELECT ss.sdr_first_name, ss.sdr_last_name,
+SELECT ss.sdr_first_name as sdr_first_name, ss.sdr_last_name as sdr_last_name,
        ROUND(SUM(oi.price), 2) as total_revenue,
        COUNT(ss.seller_id) as number_of_deals,
        ROUND(SUM(oi.price)/COUNT(*), 2) as revenue_per_deal
