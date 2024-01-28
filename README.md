@@ -1,6 +1,15 @@
-# ecommerce_data_analysis
-A compilation of SQL queries and visualizations for conducting comprehensive analysis on various aspects of an e-commerce website, including sales, products, and customer reviews. The database is publicly available on Kaggle.
+# Ecommerce-Data-Analysis
+This repository contains details of my process for analyzing data from a Brazilian e-commerce website named Olist.
 
-Database links: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
+Link to data: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
-Each folder in the repository represents a separate query or group of related queries. Included in each folder is a PDF file displaying the resutling data displayed in a series of Tableau visualizations.
+## Database Setup
+Product names translation to English:
+
+```
+select distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
+p.product_length_cm, p.product_height_cm, p.product_width_cm
+from public.product_category_name_translation pcnt 
+inner join public.products p
+	on pcnt.product_category_name = p.product_category_name
+```
