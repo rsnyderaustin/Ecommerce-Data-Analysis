@@ -5,8 +5,7 @@ Link to data: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https
 
 ## Database Setup
 Database is running on a PostgreSQL database through DBeaver.
-https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png
-
+![alt text](https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png)
 1. Product names in table 'product' are in Spanish. Use a join on table 'product_category_name_translation' to change product names to English.
 ```
 SELECT distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
