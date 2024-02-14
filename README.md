@@ -43,7 +43,6 @@ GROUP BY cd.sr_id, cd.business_segment
 ```
 #### Revenue By Won Date
 The month and year in 'won_date' and sum in 'total_revenue' indicates the amount of revenue generated from deals made that month up until today. For example, a total revenue of $100,000 in month and year 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in month and year 2018-01 that have since generated $100,000 in revenue for the e-commerce site.
-Note for this query: Certain sales people are sometimes listed as either an SDR or SR, and so the query lists total revenue by sales person without distinguishing between SDR's and SR's.
 ```
 WITH closed_deals_year_month AS (
 -- Format 'closed_deals' won_date into the necessary month-year format.
