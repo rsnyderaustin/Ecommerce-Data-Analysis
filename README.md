@@ -16,13 +16,59 @@ INNER JOIN public.products p
 ```
 Afterwards, export query result to the database as a new table.
 
+### Pair SDR and SR ID's With Full Names
+To be filled out later.
+
 ## Queries
 ### Sales Analysis
-#### Sales Development Representative Deals Revenue By Category
-'''
+SDR - Sales Development Representative
+SR - Sales Representative
+#### Revenue By Category
+SDR
+```
 SELECT cd.sdr_id, cd.business_segment, SUM(oi.price)
 FROM order_items oi
 LEFT JOIN closed_deals cd
-ON oi.seller_id = cd.seller_id
+	ON oi.seller_id = cd.seller_id
 GROUP BY cd.sdr_id, cd.business_segment 
-'''
+```
+
+SR
+```
+SELECT cd.sr_id sr_id, cd.business_segment, SUM(oi.price)
+FROM order_items oi
+LEFT JOIN closed_deals cd
+	ON oi.seller_id = cd.seller_id
+GROUP BY cd.sr_id, cd.business_segment
+```
+#### Revenue By Won Date
+The month and year in 'won_date' and sum in 'total_revenue' indicates the amount of revenue generated from deals made that month up until today. For example, a total revenue of $100,000 in month and year 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in month and year 2018-01 that have since generated $100,000 in revenue for the e-commerce site.
+Note for this query: Certain sales people are sometimes listed as either an SDR or SR, and so the query lists total revenue by sales person without distinguishing between SDR's and SR's.
+```
+WITH closed_deals_year_month AS (
+-- Format 'closed_deals' won_date into the necessary month-year format.
+	SELECT 
+		cd.seller_id, 
+		TO_CHAR(TO_DATE(cd.won_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as won_date
+	FROM closed_deals cd
+),
+revenue_by_won_date as (
+-- Gather the seller_id, won_date, and total_revenue for each seller into one table.
+	SELECT 
+		cd.won_date,
+		cd.seller_id, 
+		SUM(oi.price) as total_revenue
+	FROM order_items oi
+	INNER JOIN closed_deals_year_month cd
+		ON oi.seller_id = cd.seller_id
+	GROUP BY cd.seller_id, cd.won_date
+)
+SELECT sitn.first_name, sitn.last_name, rbwd.won_date, SUM(rbwd.total_revenue)
+FROM revenue_by_won_date rbwd
+INNER JOIN closed_deals cd
+	ON rbwd.seller_id = cd.seller_id
+INNER JOIN sales_id_to_name sitn
+	ON cd.sdr_id = sitn.sales_id
+GROUP BY sitn.first_name, sitn.last_name, rbwd.won_date
+ORDER BY sitn.last_name DESC, rbwd.won_date DESC
+```
