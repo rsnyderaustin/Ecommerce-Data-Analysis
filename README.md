@@ -15,3 +15,14 @@ INNER JOIN public.products p
 	ON pcnt.product_category_name = p.product_category_name
 ```
 Afterwards, export query result to the database as a new table.
+
+## Queries
+### Sales Analysis
+#### Sales Development Representative Deals Revenue By Category
+'''
+SELECT cd.sdr_id, cd.business_segment, SUM(oi.price)
+FROM order_items oi
+LEFT JOIN closed_deals cd
+ON oi.seller_id = cd.seller_id
+GROUP BY cd.sdr_id, cd.business_segment 
+'''
