@@ -1,5 +1,5 @@
 # Table of Contents
-* Database Setup
+* [Database Setup](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#database-setup)
 * Queries: Sales Analysis
 * Visualizations: Sales Analysis
 * Queries: Products and Sellers Analysis
