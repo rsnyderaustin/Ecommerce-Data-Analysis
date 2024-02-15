@@ -1,7 +1,11 @@
 # Ecommerce-Data-Analysis
 This repository details my process for analyzing data from a Brazilian e-commerce website named Olist.
 
-Link to data: https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce, https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
+Data source: 
+
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 ## Database Setup
 Database is running on a PostgreSQL database through DBeaver.
