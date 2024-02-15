@@ -16,9 +16,6 @@ INNER JOIN public.products p
 ```
 Afterwards, export query result to the database as a new table.
 
-### Pair SDR and SR ID's With Full Names
-To be filled out later.
-
 ## Queries
 ### Sales Analysis
 SDR - Sales Development Representative
