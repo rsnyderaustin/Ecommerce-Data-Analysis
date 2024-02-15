@@ -48,7 +48,7 @@ LEFT JOIN closed_deals cd
 	ON oi.seller_id = cd.seller_id
 GROUP BY cd.sr_id, cd.business_segment
 ```
-### Top Closers By Year and Month
+#### Top Closers By Year and Month
 SDR
 ```
 WITH qualified_leads_y_m AS (
