@@ -5,16 +5,13 @@
 * Queries: Products and Sellers Analysis
 * Visualizations: Products and Sellers Analysis
 
-# Ecommerce-Data-Analysis
-This repository details my process for analyzing data from a Brazilian e-commerce website named Olist.
-
 Data source: 
 
 https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
-## Database Setup
+# Database Setup
 
 ### Translate 'product' table product names from Spanish to English
 ```
@@ -25,12 +22,12 @@ INNER JOIN public.products p
 	ON pcnt.product_category_name = p.product_category_name
 ```
 
-## Queries
-### Sales Analysis
+# Queries
+## Sales Analysis
 SDR - Sales Development Representative
 
 SR - Sales Representative
-#### Revenue By Category
+### Revenue By Category
 SDR
 ```
 SELECT cd.sdr_id, cd.business_segment, SUM(oi.price)
@@ -48,7 +45,7 @@ LEFT JOIN closed_deals cd
 	ON oi.seller_id = cd.seller_id
 GROUP BY cd.sr_id, cd.business_segment
 ```
-#### Top Closers By Year and Month
+### Top Closers By Year and Month
 SDR
 ```
 WITH qualified_leads_y_m AS (
@@ -97,7 +94,7 @@ FROM sr_ranks sr
 WHERE rank =  1
 ORDER BY first_contact_date DESC
 ```
-#### Revenue By Won Date
+### Revenue By Won Date
 The month-year in 'won_date' and sum in 'total_revenue' indicates the amount of revenue generated from deals made from just that month-year. For example, a total revenue of $100,000 in month-year 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in month-year 2018-01 that have since generated $100,000 in revenue for the e-commerce site.
 ```
 WITH closed_deals_year_month AS (
