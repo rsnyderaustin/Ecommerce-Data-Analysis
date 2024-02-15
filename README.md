@@ -1,3 +1,10 @@
+# Table of Contents
+* Database Setup
+* Queries: Sales Analysis
+* Visualizations: Sales Analysis
+* Queries: Products and Sellers Analysis
+* Visualizations: Products and Sellers Analysis
+
 # Ecommerce-Data-Analysis
 This repository details my process for analyzing data from a Brazilian e-commerce website named Olist.
 
