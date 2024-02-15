@@ -24,20 +24,8 @@ INNER JOIN public.products p
 
 # Queries
 ## Sales Analysis
-SDR - Sales Development Representative
-
 SR - Sales Representative
 ### Revenue By Category
-SDR
-```
-SELECT cd.sdr_id, cd.business_segment, SUM(oi.price)
-FROM order_items oi
-LEFT JOIN closed_deals cd
-	ON oi.seller_id = cd.seller_id
-GROUP BY cd.sdr_id, cd.business_segment 
-```
-
-SR
 ```
 SELECT cd.sr_id sr_id, cd.business_segment, SUM(oi.price)
 FROM order_items oi
@@ -46,31 +34,6 @@ LEFT JOIN closed_deals cd
 GROUP BY cd.sr_id, cd.business_segment
 ```
 ### Top Closers By Year and Month
-SDR
-```
-WITH qualified_leads_y_m AS (
-	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
-	FROM qualified_leads ql 
-),
-sdr_ranks as (
-SELECT ql.first_contact_date,
-	RANK() OVER (PARTITION BY ql.first_contact_date 
-		ORDER BY COUNT(cd.sdr_id) DESC) as rank,
-	COUNT(cd.sdr_id) as sdr_number_of_closes,
-	sitn.first_name, sitn.last_name
-FROM qualified_leads_y_m ql 
-INNER JOIN closed_deals cd
-	ON ql.mql_id = cd.mql_id
-INNER JOIN sales_id_to_name sitn
-	ON cd.sdr_id = sitn.sales_id
-GROUP BY ql.first_contact_date, sitn.first_name, sitn.last_name
-)
-SELECT *
-FROM sdr_ranks sdr
-WHERE rank =  1
-ORDER BY first_contact_date DESC
-```
-SR
 ```
 WITH qualified_leads_y_m AS (
 	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
