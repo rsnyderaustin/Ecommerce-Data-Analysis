@@ -15,7 +15,6 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 ## Database Setup
-Database is running on a PostgreSQL database through DBeaver.
 
 ### Translate 'product' table product names from Spanish to English
 ```
