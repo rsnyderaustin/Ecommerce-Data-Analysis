@@ -19,6 +19,7 @@ Afterwards, export query result to the database as a new table.
 ## Queries
 ### Sales Analysis
 SDR - Sales Development Representative
+
 SR - Sales Representative
 #### Revenue By Category
 SDR
