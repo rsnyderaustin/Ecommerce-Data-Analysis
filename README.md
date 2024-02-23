@@ -22,10 +22,10 @@ INNER JOIN public.products p
 	ON pcnt.product_category_name = p.product_category_name
 ```
 
-# Queries
+# Data Questions and Their Answers
 ## Sales Analysis
 SR - Sales Representative
-### Revenue By Category
+### What is the total revenue generated for each of our sales representatives?
 ```
 SELECT cd.sr_id sr_id, cd.business_segment, SUM(oi.price)
 FROM order_items oi
@@ -33,7 +33,7 @@ LEFT JOIN closed_deals cd
 	ON oi.seller_id = cd.seller_id
 GROUP BY cd.sr_id, cd.business_segment
 ```
-### Top Closers By Year and Month
+### For every month, who are our top three sales people by number of closed deals?
 ```
 WITH qualified_leads_y_m AS (
 	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
@@ -54,10 +54,10 @@ GROUP BY ql.first_contact_date, sitn.first_name, sitn.last_name
 )
 SELECT *
 FROM sr_ranks sr
-WHERE rank =  1
+WHERE rank IN (1, 2, 3)
 ORDER BY first_contact_date DESC
 ```
-### Revenue By Won Date
+### How much revenue have closed deals generated for each sales representative??
 The month-year in 'won_date' and sum in 'total_revenue' indicates the amount of revenue generated from deals made from just that month-year. For example, a total revenue of $100,000 in month-year 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in month-year 2018-01 that have since generated $100,000 in revenue for the e-commerce site.
 ```
 WITH closed_deals_year_month AS (
