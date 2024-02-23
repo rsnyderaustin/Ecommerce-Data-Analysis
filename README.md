@@ -33,7 +33,7 @@ LEFT JOIN closed_deals cd
 	ON oi.seller_id = cd.seller_id
 GROUP BY cd.sr_id, cd.business_segment
 ```
-### For every month, who are our top three sales people by number of closed deals?
+### For every month, who are our top three sales representatives by number of closed deals?
 ```
 WITH qualified_leads_y_m AS (
 	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
