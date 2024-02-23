@@ -22,7 +22,7 @@ INNER JOIN public.products p
 	ON pcnt.product_category_name = p.product_category_name
 ```
 
-# Data Questions and Analysis
+# Business Questions and Analysis
 ## Sales Representatives (SR) Performance Analysis
 ### What is the total revenue generated for each of our SRs?
 ```
