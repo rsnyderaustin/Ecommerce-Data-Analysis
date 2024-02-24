@@ -1,8 +1,9 @@
 # Table of Contents
-* [Database Schema and Setup](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-schema-and-setup)
+* [Database Schema](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-schema)
 * [SQL Queries and Visualizations: Sales Representative Performance Analysis](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#sales-analysis)
 * SQL Queries and Visualizations: Products and Sellers Analysis
 * Visualizations: Products and Sellers Analysis
+* [Database Setup Notes](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-setup-notes)
 
 Data source: 
 
@@ -10,41 +11,8 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
-# Database Schema and Setup
+# Database Schema
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
-
----
-### Customer Id Key Oddity
-One oddity to note is the relationship of 'customer_id' and 'customer_unique_id' in the customers table shown specifically below. 
-
-![odd_olist_relationship](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7624d5ce-1d73-4a10-8588-a1a08f721406)
-
-In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
-
----
-### Determining Key Relationships
-To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
-
-```
-SELECT o.order_id AS primary_key, COUNT(r.order_id) AS num_foriegn_keys
-FROM orders o
-INNER JOIN order_reviews r
-	ON o.order_id = r.order_id
-GROUP BY o.order_id 
-HAVING COUNT(r.order_id) > 1
-LIMIT 5
-```
-
----
-### Translate Product Category Names from Spanish to English
-The original dataset has a separatable table for translating the Spanish 'product_category_name' in the 'products' table to English. The query below joins the two tables, replacing the Spanish 'product_category_name' column with the English translations. The resulting table then replaces the original 'products' table.
-```
-SELECT distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
-p.product_length_cm, p.product_height_cm, p.product_width_cm
-FROM public.product_category_name_translation pcnt 
-INNER JOIN public.products p
-	ON pcnt.product_category_name = p.product_category_name
-```
 
 # Business Questions and Analysis
 ## Sales Representatives (SR) Performance Analysis
@@ -106,3 +74,33 @@ INNER JOIN sales_id_to_name sales_name
 GROUP BY sales_name.first_name, sales_name.last_name, cd.won_date
 ORDER BY sales_name.last_name DESC, cd.won_date ASC
 ```
+# Database Setup Notes
+### Customer Id Key Oddity
+One oddity to note is the relationship of 'customer_id' and 'customer_unique_id' in the customers table shown specifically below. 
+
+![odd_olist_relationship](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7624d5ce-1d73-4a10-8588-a1a08f721406)
+
+In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
+
+---
+### Determining Key Relationships
+To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
+```
+SELECT o.order_id AS primary_key, COUNT(r.order_id) AS num_foriegn_keys
+FROM orders o
+INNER JOIN order_reviews r
+	ON o.order_id = r.order_id
+GROUP BY o.order_id 
+HAVING COUNT(r.order_id) > 1
+LIMIT 5
+```
+
+---
+### Translate Product Category Names from Spanish to English
+The original dataset has a separatable table for translating the Spanish 'product_category_name' in the 'products' table to English. The query below joins the two tables, replacing the Spanish 'product_category_name' column with the English translations. The resulting table then replaces the original 'products' table.
+```
+SELECT distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
+p.product_length_cm, p.product_height_cm, p.product_width_cm
+FROM public.product_category_name_translation pcnt 
+INNER JOIN public.products p
+	ON 
