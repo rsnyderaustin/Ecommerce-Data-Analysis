@@ -11,7 +11,8 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 # Database Schema
-![Database Diagram Image](/Olist-Database-Schema.pdf)
+[Olist-Database-Schema.pdf](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/files/14393659/Olist-Database-Schema.pdf)
+
 In the database, rather than each 'customer_id' in the 'orders' table relating to the primary key in 'customers', each order in the 'orders' table generates a totally unique customer_id instead. To find the 
 
 To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
