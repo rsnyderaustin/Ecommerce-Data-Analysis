@@ -15,7 +15,7 @@ In the database, rather than each 'customer_id' in the 'orders' table relating t
 
 To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
 
-'''
+```
 SELECT o.order_id AS primary_key, COUNT(r.order_id) AS num_foriegn_keys
 FROM orders o
 INNER JOIN order_reviews r
@@ -23,7 +23,7 @@ INNER JOIN order_reviews r
 GROUP BY o.order_id 
 HAVING COUNT(r.order_id) > 1
 LIMIT 5
-'''
+```
 
 ### Translate 'product' table product names from Spanish to English
 ```
