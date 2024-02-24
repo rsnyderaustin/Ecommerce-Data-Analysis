@@ -11,6 +11,19 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 # Database Setup
+In the database, rather than each 'customer_id' in the 'orders' table relating to the primary key in 'customers', each order in the 'orders' table generates a totally unique customer_id instead. To find the 
+
+To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
+
+'''
+SELECT o.order_id AS primary_key, COUNT(r.order_id) AS num_foriegn_keys
+FROM orders o
+INNER JOIN order_reviews r
+	ON o.order_id = r.order_id
+GROUP BY o.order_id 
+HAVING COUNT(r.order_id) > 1
+LIMIT 5
+'''
 
 ### Translate 'product' table product names from Spanish to English
 ```
@@ -20,6 +33,9 @@ FROM public.product_category_name_translation pcnt
 INNER JOIN public.products p
 	ON pcnt.product_category_name = p.product_category_name
 ```
+
+### Database Schema
+
 
 # Business Questions and Analysis
 ## Sales Representatives (SR) Performance Analysis
