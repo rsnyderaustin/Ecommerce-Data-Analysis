@@ -13,11 +13,11 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 # Database Schema
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
-One oddity to note is the relationship of customer_id and customer_unique_id in the customers table shown specifically below. 
+One oddity to note is the relationship of 'customer_id' and 'customer_unique_id' in the customers table shown specifically below. 
 
 ![odd_olist_relationship](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7624d5ce-1d73-4a10-8588-a1a08f721406)
 
-In the database, rather than each 'customer_id' in the 'orders' table relating to the primary key in 'customers', each order in the 'orders' table generates a totally unique customer_id instead. So, when determining customer 
+In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
 
 
 To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
