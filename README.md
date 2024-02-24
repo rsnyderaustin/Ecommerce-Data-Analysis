@@ -19,7 +19,7 @@ One oddity to note is the relationship of 'customer_id' and 'customer_unique_id'
 
 In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
 
-
+----------------------------------------------------------------
 To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
 
 ```
