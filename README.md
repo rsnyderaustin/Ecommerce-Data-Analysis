@@ -34,6 +34,9 @@ HAVING COUNT(r.order_id) > 1
 LIMIT 5
 ```
 
+---
+The original dataset has a separatable table for translating the Spanish 'product_category_name' in the 'products' table to English. The query below joins the two tables, replacing the Spanish 'product_category_name' column with the English translations. The resulting table then replaces the original 'products' table.
+
 ### Translate 'product' table product names from Spanish to English
 ```
 SELECT distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
