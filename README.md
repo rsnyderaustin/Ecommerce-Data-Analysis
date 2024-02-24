@@ -22,6 +22,7 @@ One oddity to note is the relationship of 'customer_id' and 'customer_unique_id'
 In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
 
 ---
+### Determining Key Relationships
 To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
 
 ```
@@ -35,9 +36,8 @@ LIMIT 5
 ```
 
 ---
+### Translate Product Category Names from Spanish to English
 The original dataset has a separatable table for translating the Spanish 'product_category_name' in the 'products' table to English. The query below joins the two tables, replacing the Spanish 'product_category_name' column with the English translations. The resulting table then replaces the original 'products' table.
-
-### Translate 'product' table product names from Spanish to English
 ```
 SELECT distinct p.product_id, pcnt.product_category_name_english, p.product_photos_qty, p.product_weight_g,
 p.product_length_cm, p.product_height_cm, p.product_width_cm
