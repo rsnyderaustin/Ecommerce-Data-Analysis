@@ -14,7 +14,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 ---
-
+### Customer Id Key Oddity
 One oddity to note is the relationship of 'customer_id' and 'customer_unique_id' in the customers table shown specifically below. 
 
 ![odd_olist_relationship](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7624d5ce-1d73-4a10-8588-a1a08f721406)
