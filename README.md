@@ -12,6 +12,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 # Database Schema
 [Olist-Database-Schema.pdf](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/files/14393659/Olist-Database-Schema.pdf)
+![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 In the database, rather than each 'customer_id' in the 'orders' table relating to the primary key in 'customers', each order in the 'orders' table generates a totally unique customer_id instead. To find the 
 
