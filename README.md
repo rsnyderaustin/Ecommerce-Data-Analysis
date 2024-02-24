@@ -1,5 +1,5 @@
 # Table of Contents
-* [Database Schema and Setup](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#database-setup)
+* [Database Schema and Setup](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-schema-and-setup)
 * [SQL Queries and Visualizations: Sales Representative Performance Analysis](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#sales-analysis)
 * SQL Queries and Visualizations: Products and Sellers Analysis
 * Visualizations: Products and Sellers Analysis
