@@ -51,8 +51,8 @@ FROM sr_ranks sr
 WHERE rank IN (1, 2, 3)
 ORDER BY first_contact_date DESC
 ```
-### What is the revenue generated as well as average revenue per deal from closed deals for each sales represntative on a monthly basis up until today?
-For example, a total revenue of $100,000 in month-year 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in month-year 2018-01 that have since sold $100,000 worth of product through the e-commerce site.
+### What is the revenue generated and average revenue per deal for every month and year broken down by sales representative?
+For example, a total revenue of $100,000 in year-month 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in year-month 2018-01 that have since sold $100,000 worth of product through the e-commerce site.
 ```
 WITH seller_revenue_and_won_date as (
 -- Find the total revenue for each seller
