@@ -83,7 +83,7 @@ One oddity to note is the relationship of 'customer_id' and 'customer_unique_id'
 
 ![odd_olist_relationship](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7624d5ce-1d73-4a10-8588-a1a08f721406)
 
-In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. Instead, in the 'customers' table, there can be many 'customer_id's for each 'customer_unique_id', with 'customer_unique_id' serving as the primary key. The implication of this relationship is that to analyze data requiring unique customers, the 'customer_id' column has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
+In the 'orders' table, both a unique order_id and a unique customer_id are generated for each order, rather than using 'customer_id' as a foreign key relating to the 'customers' table. So, in the 'customers' table, there can be many 'customer_id's for each primary key 'customer_unique_id'. The implication of this relationship is that to analyze data based on individual customer data, the 'customer_id' column of any table has to be joined with and replaced by 'customer_unique_id'. This normally will just add a subquery or CTE.
 
 ---
 ### Determining Key Relationships
