@@ -42,7 +42,7 @@ LEFT JOIN closed_deals cd
 WHERE ql.origin NOT IN ('', 'unknown')
 GROUP BY ql.origin
 ```
-### What are the top 5 revenue generating categories?
+### What are the top 5 item categories by revenue?
 ```
 SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
 FROM order_items oi
@@ -54,6 +54,31 @@ ORDER BY total_revenue desc
 -- Limit can be used here as a convenience (as opposed to rank or row_number which would require a subquery or cte) 
 -- as it's highly unlikely that we'll encounter a tie in total_revenue
 LIMIT 5
+```
+### For each of the top 5 categories by revenue, what are their monthly sales totals?
+```
+WITH top_5_revenue AS (
+	SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
+	FROM order_items oi
+	LEFT JOIN products p
+		ON oi.product_id = p.product_id
+	WHERE p.product_category_name_english IS NOT NULL
+	GROUP BY p.product_category_name_english 
+	ORDER BY total_revenue desc 
+	-- Limit can be used here as a convenience (as opposed to rank or row_number which would require a subquery or cte) 
+	-- as it's highly unlikely that we'll encounter a tie in total_revenue
+	LIMIT 5
+)
+SELECT p.product_category_name_english as category_name, 
+	TO_CHAR(o.order_purchase_timestamp::date, 'YYYY-mm') as year_month_purchased, SUM(oi.price) as total_revenue
+FROM orders o
+INNER JOIN order_items oi
+	ON o.order_id = oi.order_id
+INNER JOIN products p
+	ON oi.product_id = p.product_id
+WHERE p.product_category_name_english IN (SELECT category_name FROM top_5_revenue)
+GROUP BY category_name, year_month_purchased
+ORDER BY year_month_purchased DESC, category_name DESC
 ```
 
 
