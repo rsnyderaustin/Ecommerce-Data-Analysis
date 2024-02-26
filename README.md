@@ -30,7 +30,7 @@ INNER JOIN sales_id_to_name sitn
 	ON cd.sr_id = sitn.sales_id
 GROUP BY sitn.first_name, sitn.last_name, cd.business_segment
 ```
-### For every month, who are our top three SRs by number of closed deals?
+### For every month, who are our top three sales representatives by number of closed deals?
 ```
 WITH qualified_leads_y_m AS (
 	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
@@ -52,7 +52,7 @@ GROUP BY ql.first_contact_date, sitn.first_name, sitn.last_name
 SELECT *
 FROM sr_ranks sr
 WHERE rank IN (1, 2, 3)
-ORDER BY first_contact_date DESC
+ORDER BY first_contact_date DESC, rank ASC
 ```
 ### What is the revenue generated and average revenue per deal for every month and year broken down by sales representative?
 
