@@ -33,29 +33,14 @@ INNER JOIN sales_id_to_name sitn
 GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
-### For every month, who are our top three sales representatives by number of closed deals?
+### What is the percent of soliciations closed for each type of marketing origin?
 ```
-WITH qualified_leads_y_m AS (
-	SELECT mql_id, TO_CHAR(TO_DATE(ql.first_contact_date, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM') as first_contact_date
-	FROM qualified_leads ql 
-),
-sr_ranks as (
-SELECT ql.first_contact_date,
-	RANK() OVER (PARTITION BY ql.first_contact_date 
-		ORDER BY COUNT(cd.sr_id) DESC) as rank,
-	COUNT(cd.sr_id) as sr_number_of_closes,
-	sitn.first_name, sitn.last_name
-FROM qualified_leads_y_m ql 
-INNER JOIN closed_deals cd
+SELECT ql.origin, ROUND(100 * (COUNT(cd.mql_id) * 1.0 / COUNT(ql.mql_id)), 2) percent_closed
+FROM qualified_leads ql
+LEFT JOIN closed_deals cd
 	ON ql.mql_id = cd.mql_id
-INNER JOIN sales_id_to_name sitn
-	ON cd.sr_id = sitn.sales_id
-GROUP BY ql.first_contact_date, sitn.first_name, sitn.last_name
-)
-SELECT *
-FROM sr_ranks sr
-WHERE rank IN (1, 2, 3)
-ORDER BY first_contact_date DESC, rank ASC
+WHERE ql.origin != ''
+GROUP BY ql.origin
 ```
 ### What is the revenue generated and average revenue per deal for every month and year broken down by sales representative?
 
