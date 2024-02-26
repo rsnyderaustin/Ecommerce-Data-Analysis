@@ -39,35 +39,24 @@ SELECT ql.origin, ROUND(100 * (COUNT(cd.mql_id) * 1.0 / COUNT(ql.mql_id)), 2) pe
 FROM qualified_leads ql
 LEFT JOIN closed_deals cd
 	ON ql.mql_id = cd.mql_id
-WHERE ql.origin != ''
+WHERE ql.origin NOT IN ('', 'unknown')
 GROUP BY ql.origin
 ```
-### What is the revenue generated and average revenue per deal for every month and year broken down by sales representative?
-
-<div class='tableauPlaceholder' id='viz1708894095352' style='position: relative'><noscript><a href='#'><img alt='Monthly Closed Deals By Sales Representative ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlistSalesRepAnalysis&#47;Sheet3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='OlistSalesRepAnalysis&#47;Sheet3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ol&#47;OlistSalesRepAnalysis&#47;Sheet3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1708894095352');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-
-For example, a total revenue of $100,000 in year-month 2018-01 for sales person 'Roger Smith' means that 'Roger Smith' closed deals with sellers in year-month 2018-01 that have since sold $100,000 worth of product through the e-commerce site.
+### What are the top 5 revenue generating categories?
 ```
-WITH seller_revenue_and_won_date as (
--- Find the total revenue for each seller
-	SELECT 
-		cd.seller_id,
-		SUM(oi.price) as total_revenue
-	FROM order_items oi
-	INNER JOIN closed_deals cd
-		ON oi.seller_id = cd.seller_id
-	GROUP BY cd.seller_id
-)
-SELECT sales_name.first_name, sales_name.last_name, cd.won_date, COUNT(cd.sr_id) as closed_deals, 
-SUM(srwd.total_revenue) AS total_revenue
-FROM closed_deals cd
-INNER JOIN seller_revenue_and_won_date srwd
-	ON cd.seller_id = srwd.seller_id
-INNER JOIN sales_id_to_name sales_name
-	ON cd.sr_id = sales_name.sales_id
-GROUP BY sales_name.first_name, sales_name.last_name, cd.won_date
-ORDER BY sales_name.last_name DESC, cd.won_date ASC
+SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
+FROM order_items oi
+LEFT JOIN products p
+	ON oi.product_id = p.product_id
+WHERE p.product_category_name_english IS NOT NULL
+GROUP BY p.product_category_name_english 
+ORDER BY total_revenue desc 
+-- Limit can be used here as a convenience (as opposed to rank or row_number which would require a subquery or cte) 
+-- as it's highly unlikely that we'll encounter a tie in total_revenue
+LIMIT 5
 ```
+
+
 # Database Setup Notes
 ### Customer Id Key Oddity
 One oddity to note is the relationship of 'customer_id' and 'customer_unique_id' in the customers table shown specifically below. 
