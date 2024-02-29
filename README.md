@@ -10,7 +10,11 @@ https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 # Project Description
-The purpose of this project is to display my skills in answering business questions through SQL query writing and data visualizations. The dataset originates from the Brazilian e-commerce company Olist, and is made publicly available through the website Kaggle. For hosting, managing, and querying the dataset, I hosted a PostgreSQL server on my local machine, and managed the database with a mix of the command line tool 'psql' and software DBeaver.
+The purpose of this project is to display my skills in addressing business questions with SQL query writing and data visualizations. 
+
+For hosting, managing, and querying the dataset, I hosted a PostgreSQL server on my local machine, and managed the database with a mix of the command line tool 'psql' and software DBeaver.
+
+The dataset originates from the Brazilian e-commerce company Olist, and is made publicly available through the website Kaggle.
 
 # Database Schema
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
