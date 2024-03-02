@@ -24,6 +24,34 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 ![825E991C-BF1B-496F-A1EB-5B97518DC7B4](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/aa334095-80ac-48a8-b34a-c03a41d34337)
 
+```
+WITH seller_origin AS (
+	SELECT DISTINCT ql.mql_id, ql.origin, cd.seller_id as seller_id
+	FROM qualified_leads ql
+	LEFT JOIN closed_deals cd
+		ON ql.mql_id = cd.mql_id
+	WHERE origin != ''
+),
+closes_data AS (
+	SELECT origin, COUNT(seller_id) as num_deal_closes, 
+		ROUND(COUNT(seller_id) * 1.0 / COUNT(origin), 4) as portion_deals_closed 
+	FROM seller_origin
+	GROUP BY origin
+),
+revenue_data AS (
+	SELECT so.origin, COUNT(so.seller_id) as num_closes, SUM(oi.price) as total_revenue, 
+		(SUM(oi.price) * 1.0 / COUNT(so.seller_id)) as average_revenue_per_deal
+	FROM seller_origin so
+	LEFT JOIN order_items oi
+		ON so.seller_id = oi.seller_id
+	GROUP BY so.origin
+)
+SELECT cd.origin, cd.num_deal_closes, cd.portion_deals_closed, rd.total_revenue,
+	rd.average_revenue_per_deal
+FROM closes_data cd
+INNER JOIN revenue_data rd
+ON cd.origin = rd.origin
+```
 
 ### What is the relationship between deviation from the estimated order delivery date and customer order review?
 ```
