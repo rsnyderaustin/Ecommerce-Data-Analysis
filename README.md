@@ -84,7 +84,7 @@ ON cd.origin = rd.origin
 
 For SQL query producing this data, see question #2.
 
-### 3. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+### 4. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
 
 ![7A6D3CB6-5AE7-4EF9-85F6-56C45856A9DD](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/9d9fa6d5-3a27-41ad-b69e-3fa08e587001)
 
@@ -103,7 +103,7 @@ WHERE cdo.origin NOT IN ('', 'unknown', 'other')
 GROUP BY cdo.origin
 ```
 
-### 4. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
+### 5. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
 
 ![A84BBF9E-62E9-4D58-B001-D2AD2DDA75DF](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/d53b2396-3c18-454d-97bb-2febbf1c1057)
 
@@ -124,7 +124,7 @@ GROUP BY first_contact
 ORDER BY first_contact DESC
 ```
 
-### 5. What is the average time to close a deal for each of our sales representatives?
+### 6. What is the average time to close a deal for each of our sales representatives?
 
 ![0E3BAB6E-E2FB-413F-ADE6-90D8FA3B27F5](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/40d05958-0b1b-4162-977f-85806c5a197b)
 
@@ -142,7 +142,7 @@ GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
 
-### 6. What are the top 5 item categories by revenue?
+### 7. What are the top 5 item categories by revenue?
 
 ![3FB0882C-6F17-456E-AD9D-A6EFED6EA553](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/f6ec7a46-b915-46ed-aca6-9816272a09f1)
 
@@ -159,7 +159,7 @@ ORDER BY total_revenue desc
 -- encounter a tie in total_revenue
 LIMIT 5
 ```
-### 7. For each of the top 5 categories by revenue, what are their monthly sales totals?
+### 8. For each of the top 5 categories by revenue, what are their monthly sales totals?
 
 ![1DE881B9-36C2-461E-8B51-6CB31D88DDD9](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/c84a6980-0fd2-43f8-9691-a70d47034f1c)
 
