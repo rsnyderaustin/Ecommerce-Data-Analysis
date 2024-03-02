@@ -161,7 +161,7 @@ LIMIT 5
 ```
 ### 8. For each of the top 5 categories by revenue, what are their monthly sales totals?
 
-![1DE881B9-36C2-461E-8B51-6CB31D88DDD9](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/c84a6980-0fd2-43f8-9691-a70d47034f1c)
+![F61944F2-D589-488E-9858-7EA8AE9FE9D0](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/1dc62fdf-f4c2-40e5-8cd9-3f0a6467aff7)
 
 ```
 WITH top_5_revenue AS (
