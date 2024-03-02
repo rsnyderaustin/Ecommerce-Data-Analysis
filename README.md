@@ -78,6 +78,9 @@ HAVING COUNT(delivery_delay_minutes) > 5
 ```
 
 ### What is the average time to close a deal for each of our sales representatives?
+
+![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7075f07d-8b86-4864-9f5d-60484109eb74)
+
 ```
 WITH time_to_close AS (
 	SELECT cd.sr_id, COUNT(cd.sr_id) OVER(PARTITION BY sr_id) as num_closes, (cd.won_date - ql.first_contact_date) as days_to_close
@@ -92,9 +95,10 @@ GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
 
-![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7075f07d-8b86-4864-9f5d-60484109eb74)
-
 ### What is the percent of soliciations closed for each type of marketing origin?
+
+![8D8DC1C6-0700-42B0-B497-BA7B771CE060_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5adeff1f-df87-42bf-a2aa-d5d4707f730b)
+
 ```
 SELECT ql.origin, ROUND(100 * (COUNT(cd.mql_id) * 1.0 / COUNT(ql.mql_id)), 2) percent_closed
 FROM qualified_leads ql
@@ -104,9 +108,10 @@ WHERE ql.origin NOT IN ('', 'unknown')
 GROUP BY ql.origin
 ```
 
-![8D8DC1C6-0700-42B0-B497-BA7B771CE060_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5adeff1f-df87-42bf-a2aa-d5d4707f730b)
-
 ### What is the revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+
+![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
+
 ```
 WITH closed_deals_origin AS (
 	SELECT cd.seller_id, ql.origin
@@ -121,9 +126,6 @@ ON cdo.seller_id = oi.seller_id
 WHERE cdo.origin NOT IN ('', 'unknown', 'other')
 GROUP BY cdo.origin
 ```
-
-![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
-
 
 ### What are the top 5 item categories by revenue?
 ```
