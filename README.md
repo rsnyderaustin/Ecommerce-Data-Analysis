@@ -43,8 +43,6 @@ HAVING COUNT(delivery_delay_minutes) > 5
 
 ![E4BCBA3D-48A1-4A4C-B733-265CDFA7976F](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b6d665e0-8a97-42d0-96e3-5d8a4260c088)
 
-### What is the relationship between total order price and customer order reviews?
-
 ### What is the average time to close a deal for each of our sales representatives?
 ```
 WITH time_to_close AS (
@@ -74,6 +72,23 @@ GROUP BY ql.origin
 ```
 
 ![8D8DC1C6-0700-42B0-B497-BA7B771CE060_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5adeff1f-df87-42bf-a2aa-d5d4707f730b)
+
+### What is the revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+```
+WITH closed_deals_origin AS (
+	SELECT cd.seller_id, ql.origin
+	FROM closed_deals cd
+	INNER JOIN qualified_leads ql
+	ON cd.mql_id = ql.mql_id
+)
+SELECT cdo.origin, COUNT(cdo.seller_id) as num_closes, SUM(price) as total_revenue
+FROM closed_deals_origin cdo
+INNER JOIN order_items oi
+ON cdo.seller_id = oi.seller_id
+WHERE cdo.origin NOT IN ('', 'unknown', 'other')
+GROUP BY cdo.origin
+```
+![21938939-7B10-442B-913A-28D877610B8A](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b48ebf82-1105-405a-989e-66781aa55383)
 
 
 ### What are the top 5 item categories by revenue?
