@@ -54,6 +54,11 @@ ON cd.origin = rd.origin
 ```
 
 ### What is the relationship between deviation from the estimated order delivery date and customer order review?
+
+**Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
+
+![E4BCBA3D-48A1-4A4C-B733-265CDFA7976F](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b6d665e0-8a97-42d0-96e3-5d8a4260c088)
+
 ```
 WITH delivery_delay AS (
 	SELECT reviews.order_id, o.order_estimated_delivery_date, 
@@ -71,10 +76,6 @@ FROM delivery_delay
 GROUP BY FLOOR(delivery_delay_minutes / 1000)
 HAVING COUNT(delivery_delay_minutes) > 5
 ```
-
-**Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
-
-![E4BCBA3D-48A1-4A4C-B733-265CDFA7976F](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b6d665e0-8a97-42d0-96e3-5d8a4260c088)
 
 ### What is the average time to close a deal for each of our sales representatives?
 ```
