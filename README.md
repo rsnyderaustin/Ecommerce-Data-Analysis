@@ -55,7 +55,7 @@ ON cd.origin = rd.origin
 
 ### 2. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
 
-![424C2076-7718-45D2-969B-D6CF681A49A1](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/d699be68-f716-4685-aab1-107a3891a938)
+![49C8D43D-AA76-4536-B346-143961F2F0A0](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/f4ab22f2-eea3-442c-b4ad-a6b64ffed035)
 
 ```
 WITH closed_deals_origin AS (
