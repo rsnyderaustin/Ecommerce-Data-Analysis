@@ -34,6 +34,9 @@ INNER JOIN sales_id_to_name sitn
 GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
+
+![673A15E0-9692-4E14-8380-F8A6D557A292_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/00642bba-c9a0-4493-80a0-803f7b6851f2)
+
 ### What is the percent of soliciations closed for each type of marketing origin?
 ```
 SELECT ql.origin, ROUND(100 * (COUNT(cd.mql_id) * 1.0 / COUNT(ql.mql_id)), 2) percent_closed
