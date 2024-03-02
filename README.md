@@ -44,6 +44,7 @@ FROM delivery_delay
 GROUP BY FLOOR(delivery_delay_minutes / 1000)
 HAVING COUNT(delivery_delay_minutes) > 5
 ```
+
 ### 2. What does the general sales performance and revenue look like for each marketing origin?
 
 ![A1AF6DA6-3FF3-4396-860D-3F6E06874C38](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/e602ffb6-990f-4b97-b835-58278e98f711)
@@ -76,6 +77,12 @@ FROM closes_data cd
 INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
+
+### We are looking to get a better idae of how to alloate our sales efforts. What is the percent of deals closed, and the average revenue for each closed deal by marketing origin?
+
+![AA2E3009-364B-4F9A-B1B1-4F8074BA2CC5](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/e6195546-8d87-4ae5-89b8-987788a78e51)
+
+For SQL query producing this data, see question #2.
 
 ### 3. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
 
