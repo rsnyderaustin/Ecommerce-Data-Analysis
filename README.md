@@ -95,7 +95,7 @@ ORDER BY first_contact DESC
 
 ### 4. What is the average time to close a deal for each of our sales representatives?
 
-![B07F3BB1-AE36-4EAE-BF02-183150FB6544](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6e81f7ae-5466-46ca-a144-cd4c51895602)
+![0E3BAB6E-E2FB-413F-ADE6-90D8FA3B27F5](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/40d05958-0b1b-4162-977f-85806c5a197b)
 
 ```
 WITH time_to_close AS (
