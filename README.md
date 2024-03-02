@@ -25,7 +25,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![825E991C-BF1B-496F-A1EB-5B97518DC7B4](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/aa334095-80ac-48a8-b34a-c03a41d34337)
 
 
-### How do customer order reviews change when an order is delivered before or after the estimated order delivery date?
+### What is the relationship between deviation from the estimated order delivery date and customer order review?
 ```
 WITH delivery_delay AS (
 	SELECT reviews.order_id, o.order_estimated_delivery_date, 
