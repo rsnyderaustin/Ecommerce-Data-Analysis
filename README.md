@@ -1,6 +1,6 @@
 # Table of Contents
 * [Database Schema](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-schema)
-* [SQL Queries and Visualizations: Business Questions and Analysis](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#sales-analysis)
+* [SQL Queries and Visualizations: Business Questions and Analysis](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/tree/main?tab=readme-ov-file#business-questions-and-analysis)
 * [Database Setup Notes](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/blob/main/README.md#database-setup-notes)
 
 # Project Description
