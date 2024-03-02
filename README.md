@@ -20,7 +20,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 # Business Questions and Analysis
-### 1. What does the general sales performance and revenue look like by marketing origin?
+### 1. What does the general sales performance and revenue look like for each marketing origin?
 
 ![825E991C-BF1B-496F-A1EB-5B97518DC7B4](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/aa334095-80ac-48a8-b34a-c03a41d34337)
 
@@ -53,9 +53,9 @@ INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
 
-### 5. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+### 2. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
 
-![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
+![424C2076-7718-45D2-969B-D6CF681A49A1](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/d699be68-f716-4685-aab1-107a3891a938)
 
 ```
 WITH closed_deals_origin AS (
@@ -72,7 +72,7 @@ WHERE cdo.origin NOT IN ('', 'unknown', 'other')
 GROUP BY cdo.origin
 ```
 
-### 2. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
+### 3. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
 
 ![EC21F402-07D9-463C-8703-9B3B2F2B6661](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6eb0b1e4-0f1a-4f59-9c9a-00a125c8a3fd)
 
@@ -93,9 +93,9 @@ GROUP BY first_contact
 ORDER BY first_contact DESC
 ```
 
-### 3. What is the average time to close a deal for each of our sales representatives?
+### 4. What is the average time to close a deal for each of our sales representatives?
 
-![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7075f07d-8b86-4864-9f5d-60484109eb74)
+![B07F3BB1-AE36-4EAE-BF02-183150FB6544](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6e81f7ae-5466-46ca-a144-cd4c51895602)
 
 ```
 WITH time_to_close AS (
@@ -111,7 +111,7 @@ GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
 
-### 4. What is the relationship between deviation from the estimated order delivery date and customer order review?
+### 5. What is the relationship between deviation from the estimated order delivery date and customer order review?
 
 **Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
 
@@ -136,6 +136,9 @@ HAVING COUNT(delivery_delay_minutes) > 5
 ```
 
 ### 6. What are the top 5 item categories by revenue?
+
+![3FB0882C-6F17-456E-AD9D-A6EFED6EA553](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/f6ec7a46-b915-46ed-aca6-9816272a09f1)
+
 ```
 SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
 FROM order_items oi
@@ -150,6 +153,9 @@ ORDER BY total_revenue desc
 LIMIT 5
 ```
 ### 7. For each of the top 5 categories by revenue, what are their monthly sales totals?
+
+![34467CCE-C0AB-4EB8-B359-24E1BFB12F8C](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/a6e04334-4195-4407-bde3-c2ec7197207a)
+
 ```
 WITH top_5_revenue AS (
 	SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
