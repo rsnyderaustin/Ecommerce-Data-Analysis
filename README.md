@@ -53,7 +53,7 @@ INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
 
-### 5. What is the relationshipo between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+### 5. What is the relationship between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
 
 ![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
 
