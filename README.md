@@ -47,6 +47,10 @@ LEFT JOIN closed_deals cd
 WHERE ql.origin NOT IN ('', 'unknown')
 GROUP BY ql.origin
 ```
+
+![8D8DC1C6-0700-42B0-B497-BA7B771CE060_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5adeff1f-df87-42bf-a2aa-d5d4707f730b)
+
+
 ### What are the top 5 item categories by revenue?
 ```
 SELECT p.product_category_name_english as category_name, SUM(oi.price) as total_revenue
