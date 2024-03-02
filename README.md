@@ -105,7 +105,7 @@ GROUP BY cdo.origin
 
 ### 5. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
 
-![A84BBF9E-62E9-4D58-B001-D2AD2DDA75DF](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/d53b2396-3c18-454d-97bb-2febbf1c1057)
+![E194D844-A7A7-4F32-9BDA-1277BCA8D9CE](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e40de5e-d3cb-4f1b-9943-7b6b7855c983)
 
 ```
 WITH seller_origin AS (
