@@ -25,7 +25,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 **Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
 
-![E8B2F2BC-4C51-4451-928C-D34F2E17F327](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/608fbcc8-04ed-4e81-ba93-62151881dc83)
+![46556292-1356-4D6C-A972-6A42C0F7F803](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6587e893-0d0d-469e-abca-c83272d9077f)
 
 ```
 WITH delivery_delay AS (
@@ -178,7 +178,7 @@ LIMIT 5
 ```
 ### 8. For each of the top 5 categories by revenue, what are their monthly sales totals?
 
-![34467CCE-C0AB-4EB8-B359-24E1BFB12F8C](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/a6e04334-4195-4407-bde3-c2ec7197207a)
+![1DE881B9-36C2-461E-8B51-6CB31D88DDD9](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/c84a6980-0fd2-43f8-9691-a70d47034f1c)
 
 ```
 WITH top_5_revenue AS (
