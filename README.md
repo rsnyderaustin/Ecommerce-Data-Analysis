@@ -53,6 +53,25 @@ INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
 
+### 5. What is the relationshipo between revenue generated from closed deals, and number of closed deals for each type of marketing origin?
+
+![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
+
+```
+WITH closed_deals_origin AS (
+	SELECT cd.seller_id, ql.origin
+	FROM closed_deals cd
+	INNER JOIN qualified_leads ql
+	ON cd.mql_id = ql.mql_id
+)
+SELECT cdo.origin, COUNT(cdo.seller_id) as num_closes, SUM(price) as total_revenue
+FROM closed_deals_origin cdo
+INNER JOIN order_items oi
+ON cdo.seller_id = oi.seller_id
+WHERE cdo.origin NOT IN ('', 'unknown', 'other')
+GROUP BY cdo.origin
+```
+
 ### 2. We've recently shifted our strategy for targeting potential sellers through organic search. How has our percent of deals closed from organic search changed over time?
 
 ![EC21F402-07D9-463C-8703-9B3B2F2B6661](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6eb0b1e4-0f1a-4f59-9c9a-00a125c8a3fd)
@@ -114,25 +133,6 @@ ROUND(AVG(review_score), 2) as avg_review_score, COUNT(delivery_delay_minutes) a
 FROM delivery_delay
 GROUP BY FLOOR(delivery_delay_minutes / 1000)
 HAVING COUNT(delivery_delay_minutes) > 5
-```
-
-### 5. What is the revenue generated from closed deals, and number of closed deals for each type of marketing origin?
-
-![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
-
-```
-WITH closed_deals_origin AS (
-	SELECT cd.seller_id, ql.origin
-	FROM closed_deals cd
-	INNER JOIN qualified_leads ql
-	ON cd.mql_id = ql.mql_id
-)
-SELECT cdo.origin, COUNT(cdo.seller_id) as num_closes, SUM(price) as total_revenue
-FROM closed_deals_origin cdo
-INNER JOIN order_items oi
-ON cdo.seller_id = oi.seller_id
-WHERE cdo.origin NOT IN ('', 'unknown', 'other')
-GROUP BY cdo.origin
 ```
 
 ### 6. What are the top 5 item categories by revenue?
