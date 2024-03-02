@@ -20,7 +20,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 # Business Questions and Analysis
-### What is the relationship between delivery delays and customer reviews?
+### What is the relationship between deviation from the estimated order delivery date and customer order reviews?
 ```
 WITH delivery_delay AS (
 	SELECT reviews.order_id, o.order_estimated_delivery_date, 
@@ -38,6 +38,7 @@ FROM delivery_delay
 GROUP BY FLOOR(delivery_delay_minutes / 1000)
 HAVING COUNT(delivery_delay_minutes) > 5
 ```
+![E4BCBA3D-48A1-4A4C-B733-265CDFA7976F](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b6d665e0-8a97-42d0-96e3-5d8a4260c088)
 
 ### What is the average time to close a deal for each of our sales representatives?
 ```
