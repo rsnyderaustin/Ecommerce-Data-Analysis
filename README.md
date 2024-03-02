@@ -60,8 +60,9 @@ LEFT JOIN products p
 WHERE p.product_category_name_english IS NOT NULL
 GROUP BY p.product_category_name_english 
 ORDER BY total_revenue desc 
--- Limit can be used here as a convenience (as opposed to rank or row_number which would require a subquery or cte) 
--- as it's highly unlikely that we'll encounter a tie in total_revenue
+-- Limit can be used here as a convenience (as opposed to rank or row_number
+-- which would require a subquery or cte) as it's highly unlikely that we'll
+-- encounter a tie in total_revenue
 LIMIT 5
 ```
 ### For each of the top 5 categories by revenue, what are their monthly sales totals?
