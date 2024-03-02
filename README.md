@@ -20,6 +20,10 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 # Business Questions and Analysis
+### What does the general sales performance and revenue look like by marketing origin?
+
+![F0B14B55-A5A1-466B-B85A-7BF5653CBDE1](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5849bef0-41d6-45a7-a5d2-528c3a02b22a)
+
 ### How do customer order reviews change when an order is delivered before or after the estimated order delivery date?
 ```
 WITH delivery_delay AS (
@@ -59,7 +63,6 @@ HAVING ttc.num_closes > 5
 ```
 
 ![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7075f07d-8b86-4864-9f5d-60484109eb74)
-
 
 ### What is the percent of soliciations closed for each type of marketing origin?
 ```
