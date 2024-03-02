@@ -35,7 +35,7 @@ GROUP BY sitn.first_name, sitn.last_name, ttc.num_closes
 HAVING ttc.num_closes > 5
 ```
 
-![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/94bb6743-a070-4be5-8ba1-e8ce7909b742)
+![967DC356-2FCE-42DD-BB04-C7E78DA26760_1_201_a](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/7075f07d-8b86-4864-9f5d-60484109eb74)
 
 
 ### What is the percent of soliciations closed for each type of marketing origin?
