@@ -78,7 +78,7 @@ INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
 
-### We are looking to get a better idae of how to alloate our sales efforts. What is the percent of deals closed, and the average revenue for each closed deal by marketing origin?
+### 3. We are looking to get a better idae of how to alloate our sales efforts. What is the percent of deals closed, and the average revenue for each closed deal by marketing origin?
 
 ![AA2E3009-364B-4F9A-B1B1-4F8074BA2CC5](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/e6195546-8d87-4ae5-89b8-987788a78e51)
 
