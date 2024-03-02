@@ -8,7 +8,7 @@ The purpose of this project is to display my skills in addressing business quest
 
 For hosting, managing, and querying the dataset, I hosted a PostgreSQL server on my local machine, and managed the database with a mix of the command line tool 'psql' and software DBeaver.
 
-The dataset originates from the Brazilian e-commerce company Olist, and is made publicly available through the website Kaggle.
+The dataset used for this project was provided by Brazilian e-commerce company Olist via the website Kaggle.
 
 Data source: 
 
