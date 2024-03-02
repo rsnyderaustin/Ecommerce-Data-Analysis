@@ -21,6 +21,23 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 
 # Business Questions and Analysis
 ### What is the relationship between delivery delays and customer reviews?
+```
+WITH delivery_delay AS (
+	SELECT reviews.order_id, o.order_estimated_delivery_date, 
+	o.order_delivered_customer_date,
+	ROUND(EXTRACT(EPOCH FROM (o.order_delivered_customer_date - o.order_estimated_delivery_date)) / 60, 2)
+	as delivery_delay_minutes,
+	reviews.review_score
+	FROM order_reviews reviews
+	INNER JOIN orders o
+		ON reviews.order_id = o.order_id
+)
+SELECT FLOOR(delivery_delay_minutes / 1000) * 1000 AS delivery_delay_minutes,
+ROUND(AVG(review_score), 2) as avg_review_score, COUNT(delivery_delay_minutes) as num_deliveries
+FROM delivery_delay
+GROUP BY FLOOR(delivery_delay_minutes / 1000)
+HAVING COUNT(delivery_delay_minutes) > 5
+```
 
 ### What is the average time to close a deal for each of our sales representatives?
 ```
