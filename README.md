@@ -22,7 +22,7 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 # Business Questions and Analysis
 ### 1. What does the general sales performance and revenue look like for each marketing origin?
 
-![825E991C-BF1B-496F-A1EB-5B97518DC7B4](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/aa334095-80ac-48a8-b34a-c03a41d34337)
+![A1AF6DA6-3FF3-4396-860D-3F6E06874C38](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/e602ffb6-990f-4b97-b835-58278e98f711)
 
 ```
 WITH seller_origin AS (
