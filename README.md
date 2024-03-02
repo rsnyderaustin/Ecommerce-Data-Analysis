@@ -192,7 +192,7 @@ In the 'orders' table, both a unique order_id and a unique customer_id are gener
 
 ---
 ### Determining Key Relationships
-To determine one-to-one, many-to-one, etc relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
+To determine one-to-one, many-to-one, and other types of relationships, queries such as the one below can display whether a table has multiple instances of a foreign key for the key relationship that we're interested in.
 ```
 SELECT o.order_id AS primary_key, COUNT(r.order_id) AS num_foriegn_keys
 FROM orders o
