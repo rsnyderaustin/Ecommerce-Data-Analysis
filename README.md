@@ -22,7 +22,8 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 # Business Questions and Analysis
 ### What does the general sales performance and revenue look like by marketing origin?
 
-![F0B14B55-A5A1-466B-B85A-7BF5653CBDE1](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5849bef0-41d6-45a7-a5d2-528c3a02b22a)
+![825E991C-BF1B-496F-A1EB-5B97518DC7B4](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/aa334095-80ac-48a8-b34a-c03a41d34337)
+
 
 ### How do customer order reviews change when an order is delivered before or after the estimated order delivery date?
 ```
