@@ -88,7 +88,8 @@ ON cdo.seller_id = oi.seller_id
 WHERE cdo.origin NOT IN ('', 'unknown', 'other')
 GROUP BY cdo.origin
 ```
-![21938939-7B10-442B-913A-28D877610B8A](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b48ebf82-1105-405a-989e-66781aa55383)
+
+![4DA2614E-9631-45A7-9D47-268C2B95F7A6](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/5e1ebb1b-eb6f-41f3-b7fa-cccf9827e395)
 
 
 ### What are the top 5 item categories by revenue?
