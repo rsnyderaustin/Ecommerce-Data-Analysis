@@ -20,6 +20,8 @@ https://www.kaggle.com/datasets/olistbr/marketing-funnel-olist
 ![Olist Diagram](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/2e1c568f-cbf7-4c37-bbf7-736162f19681)
 
 # Business Questions and Analysis
+### What is the relationship between delivery delays and customer reviews?
+
 ### What is the average time to close a deal for each of our sales representatives?
 ```
 WITH time_to_close AS (
