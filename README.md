@@ -53,6 +53,26 @@ INNER JOIN revenue_data rd
 ON cd.origin = rd.origin
 ```
 
+### We've recently shifted our strategy in our organic search targeting. Have our percent of deals closed from email changed in the last 3 months?
+
+![EC21F402-07D9-463C-8703-9B3B2F2B6661](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/6eb0b1e4-0f1a-4f59-9c9a-00a125c8a3fd)
+
+```
+WITH seller_origin AS (
+	SELECT DISTINCT ql.mql_id, TO_CHAR(ql.first_contact_date, 'YYYY-MM') AS first_contact, 
+	ql.first_contact_date, cd.seller_id as seller_id, 
+	TO_CHAR(cd.won_date, 'YYYY-mm') as won_date
+	FROM qualified_leads ql
+	LEFT JOIN closed_deals cd
+		ON ql.mql_id = cd.mql_id
+	WHERE origin = 'organic_search'
+)
+SELECT first_contact, COUNT(won_date) as num_closes, COUNT(mql_id) as num_solicitations, 
+COUNT(won_date) * 1.0 / COUNT(mql_id) as portion_closed
+FROM seller_origin
+GROUP BY first_contact
+ORDER BY first_contact DESC
+```
 ### What is the relationship between deviation from the estimated order delivery date and customer order review?
 
 **Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
