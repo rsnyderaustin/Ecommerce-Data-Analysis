@@ -57,7 +57,7 @@ ON cd.origin = rd.origin
 
 **Note that a negative delivery delay indicates that the order was delivered before the estimated delivery date, and a positive delay indicates that the order was delivered after the estimated delivery date.**
 
-![E4BCBA3D-48A1-4A4C-B733-265CDFA7976F](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/b6d665e0-8a97-42d0-96e3-5d8a4260c088)
+![B8F88130-EC3E-4E8C-A389-3E2BE46DDB62](https://github.com/rsnyderaustin/Ecommerce-Data-Analysis/assets/114520816/054db93e-3e95-4eb3-94c0-afd834aa04c5)
 
 ```
 WITH delivery_delay AS (
